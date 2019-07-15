@@ -20,6 +20,7 @@ public class YourInvites extends AppCompatActivity {
     private FirebaseAuth mauth;
     private DatabaseReference UserDatabaseReference,numref;
     String mynum;
+    InvitedUser invitedUser;
     private User user;
     private ArrayList<InvitedUser>users;
     @Override
@@ -54,11 +55,21 @@ public class YourInvites extends AppCompatActivity {
                 // Get Post object and use the values to update the UI
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
-                    users.add(dataSnapshot1.getValue(InvitedUser.class));
+                    for(DataSnapshot data :dataSnapshot1.getChildren())
+                    {
+                        if(data.getKey().equals("InvitedUser"))
+                        {
+                            invitedUser = data.getValue(InvitedUser.class);
+                            System.out.println("Number is " + invitedUser.getNumber());
+                            if(invitedUser.getNumber().equals(mynum))
+                                users.add(invitedUser);
+                        }
+
+                    }
                 }
                 for(int i =0;i<users.size();i++)
                     System.out.println(users.get(i).getNumber());
-                InvitedUser invitedUser = dataSnapshot.getValue(InvitedUser.class);
+
             }
 
             @Override

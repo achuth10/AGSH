@@ -34,7 +34,7 @@ public class Invites extends AppCompatActivity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InvitedUser invitedUser = new InvitedUser(number.getText().toString(), amt.getText().toString());
+                InvitedUser invitedUser = new InvitedUser(number.getText().toString(), amt.getText().toString(),firebaseAuth.getUid());
                 UserDatabaseReference.child("InvitedUser").setValue(invitedUser);
             }
         });

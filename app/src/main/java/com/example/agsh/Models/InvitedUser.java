@@ -1,14 +1,15 @@
 package com.example.agsh.Models;
 
 public class InvitedUser {
-    private String number,amt;
+    private String number,amt,by;
 InvitedUser()
 {
 
 }
-    public InvitedUser(String toString, String toString1) {
+    public InvitedUser(String toString, String toString1,String by) {
         number = toString;
         amt=toString1;
+        this.by = by;
     }
 
     public String getNumber() {
