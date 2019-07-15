@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YourInvites"></activity>
+        <activity android:name=".Temp"></activity>
+        <activity android:name=".YourInvites" />
         <activity android:name=".Invites" />
         <activity android:name=".Login" />
         <activity android:name=".SignUp" />
@@ -22,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_SOcsjY1YYSJUHu"
+            />
     </application>
 
 </manifest>

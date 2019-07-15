@@ -28,6 +28,7 @@ public class YourInvites extends AppCompatActivity {
     private ArrayList<InvitedUser>users;
     private InviteAdapter inviteAdapter;
     private RecyclerView recyclerView;
+    ValueEventListener inviteListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +56,11 @@ public class YourInvites extends AppCompatActivity {
         });
 
 
-        ValueEventListener postListener = new ValueEventListener() {
+         inviteListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
+                users.clear();
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
                     for(DataSnapshot data :dataSnapshot1.getChildren())
@@ -76,7 +78,6 @@ public class YourInvites extends AppCompatActivity {
                                         System.out.println("Invited by " + user.getName());
                                         invitedUser.setInvitee(user.getName());
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -99,7 +100,7 @@ public class YourInvites extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         };
-        UserDatabaseReference.addValueEventListener(postListener);
+        UserDatabaseReference.addValueEventListener(inviteListener);
     }
 
     private void disp() {
@@ -107,5 +108,11 @@ public class YourInvites extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(inviteAdapter);
         inviteAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }
