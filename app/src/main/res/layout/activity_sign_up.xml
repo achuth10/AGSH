@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".SignUp">
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:hint="Enter name"
+        android:layout_marginTop="20dp"
+        android:id="@+id/NameEdit"
+        />
+
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:hint="Enter phone number"
+        android:id="@+id/numberedit"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/NameEdit"
+        />
+
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:hint="Enter email"
+        android:layout_marginTop="20dp"
+        android:id="@+id/EmailEdit"
+        android:layout_below="@id/numberedit"
+        />
+
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:hint="Enter password"
+        android:id="@+id/PasswordEdit"
+        android:inputType="textPassword"
+        android:layout_below="@id/EmailEdit"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordEdit"
+        android:id="@+id/SubmitBtn"
+        android:text="Submit"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>
