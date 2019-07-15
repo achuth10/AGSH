@@ -1,12 +1,33 @@
 package com.example.agsh.Models;
 
 public class InvitedUser {
-    private String number,amt,by;
+    private String number;
+    private String amt;
+    private String by;
+
+    public String getInvitee() {
+        return invitee;
+    }
+
+    public void setInvitee(String invitee) {
+        this.invitee = invitee;
+    }
+
+    private String invitee;
 InvitedUser()
 {
 
 }
-    public InvitedUser(String toString, String toString1,String by) {
+
+    public String getBy() {
+        return by;
+    }
+
+    public void setBy(String by) {
+        this.by = by;
+    }
+
+    public InvitedUser(String toString, String toString1, String by) {
         number = toString;
         amt=toString1;
         this.by = by;

@@ -2,9 +2,12 @@ package com.example.agsh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.agsh.Adapters.InviteAdapter;
 import com.example.agsh.Models.InvitedUser;
 import com.example.agsh.Models.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,11 +21,13 @@ import java.util.ArrayList;
 
 public class YourInvites extends AppCompatActivity {
     private FirebaseAuth mauth;
-    private DatabaseReference UserDatabaseReference,numref;
+    private DatabaseReference UserDatabaseReference,numref,inviteuserref;
     String mynum;
     InvitedUser invitedUser;
     private User user;
     private ArrayList<InvitedUser>users;
+    private InviteAdapter inviteAdapter;
+    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,7 @@ public class YourInvites extends AppCompatActivity {
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         numref=UserDatabaseReference.child(mauth.getUid()).child("Details");
         users=new ArrayList<>();
+        recyclerView=findViewById(R.id.InviteRecyler);
         initlistener();
     }
 
@@ -57,27 +63,49 @@ public class YourInvites extends AppCompatActivity {
                 {
                     for(DataSnapshot data :dataSnapshot1.getChildren())
                     {
-                        if(data.getKey().equals("InvitedUser"))
-                        {
+                        if(data.getKey().equals("InvitedUser")) {
                             invitedUser = data.getValue(InvitedUser.class);
-                            System.out.println("Number is " + invitedUser.getNumber());
-                            if(invitedUser.getNumber().equals(mynum))
+//                            System.out.println("Number is " + invitedUser.getNumber());
+                            if (invitedUser.getNumber().equals(mynum)) {
+
+                                inviteuserref = UserDatabaseReference.child(invitedUser.getBy()).child("Details");
+                                inviteuserref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        user=dataSnapshot.getValue(User.class);
+                                        System.out.println("Invited by " + user.getName());
+                                        invitedUser.setInvitee(user.getName());
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                                 users.add(invitedUser);
+                            }
                         }
 
                     }
                 }
-                for(int i =0;i<users.size();i++)
-                    System.out.println(users.get(i).getNumber());
+
+
+                disp();
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                // ...
             }
         };
         UserDatabaseReference.addValueEventListener(postListener);
+    }
+
+    private void disp() {
+        inviteAdapter= new InviteAdapter(getApplicationContext(),users);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(inviteAdapter);
+        inviteAdapter.notifyDataSetChanged();
     }
 }
