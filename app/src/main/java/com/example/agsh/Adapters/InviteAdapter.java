@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agsh.Models.InvitedUser;
 import com.example.agsh.R;
+import com.example.agsh.SendMoney;
 import com.example.agsh.Temp;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public InviteAdapter(Context context, ArrayList<InvitedUser> invitedUsers)
         public void onClick(View v) {
             if(v.getId()==pay.getId())
             {
-                Intent i = new Intent(v.getContext(), Temp.class);
+                Intent i = new Intent(v.getContext(), SendMoney.class);
                 i.putExtra("Uuid",user.getBy());
                 i.putExtra("Amt",user.getAmt());
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

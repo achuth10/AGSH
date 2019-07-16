@@ -3,6 +3,7 @@ package com.example.agsh;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +24,10 @@ import java.util.ArrayList;
 public class SendMoney extends AppCompatActivity {
     private FirebaseAuth mauth;
     private DatabaseReference UserDatabaseReference,numref,inviteuserref;
-    private User user;
+    private User user,user1;
     private EditText number,amt;
     private Button sendmoney;
-    private String tonum;
+    private String toid,toamt="";
     int flag= 0 ;
     ValueEventListener userListener;
     @Override
@@ -39,6 +40,18 @@ public class SendMoney extends AppCompatActivity {
         sendmoney= findViewById(R.id.Sendbtn);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         numref=UserDatabaseReference.child(mauth.getUid()).child("Details");
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null)
+        {
+            toid = extras.getString("Uuid");
+            toamt= extras.getString("Amt");
+        }
+        if(!toamt.equals(""))
+        {
+            init();
+            amt.setText(toamt);
+
+        }
         sendmoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,19 +63,6 @@ public class SendMoney extends AppCompatActivity {
 
 
     private void initlistener() {
-//        numref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                user=dataSnapshot.getValue(User.class);
-//                mynum=user.getPhonenumber();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
 
         userListener = new ValueEventListener() {
             @Override
@@ -71,34 +71,21 @@ public class SendMoney extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     if (flag == 0) {
                         for (DataSnapshot data : dataSnapshot1.getChildren()) {
-                            System.out.println("key is " + data.getKey());
                             if (data.getKey().equals("Details")) {
                                 user = data.getValue(User.class);
-                                System.out.println("Number is " + user.getPhonenumber());
                                 if (user.getPhonenumber().equals(number.getText().toString())) {
                                     String balance = user.getAccbal();
                                     flag = 1;
                                     int newbal = Integer.parseInt(balance) + Integer.parseInt(amt.getText().toString());
-                                    System.out.println("new bal is " + newbal);
                                     UserDatabaseReference.child(user.getId()).child("Details").child("accbal").setValue(String.valueOf(newbal));
+                                    if (!toamt.equals("")) {
+                                        String realamt = amt.getText().toString();
+                                        if (Integer.parseInt(toamt) - Integer.parseInt(realamt) == 0) {
+                                            UserDatabaseReference.child(user.getId()).child("InvitedUser").removeValue();
+                                        }
 
+                                    }
                                 }
-//}
-//                                inviteuserref = UserDatabaseReference.child(invitedUser.getBy()).child("Details");
-//                                inviteuserref.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                        user=dataSnapshot.getValue(User.class);
-//                                        System.out.println("Invited by " + user.getName());
-//                                        invitedUser.setInvitee(user.getName());
-//                                    }
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                    }
-//                                });
-//
-//                                users.add(invitedUser);
 
                             }
 
@@ -109,6 +96,8 @@ public class SendMoney extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"User is not signed up with PC",Toast.LENGTH_SHORT).show();
                 }
+                else
+                    startActivity(new Intent(getApplicationContext(),Dashboard.class));
             }
 
             @Override
@@ -118,4 +107,20 @@ public class SendMoney extends AppCompatActivity {
         UserDatabaseReference.addValueEventListener(userListener);
 
     }
+
+    private void init() {
+        UserDatabaseReference.child(toid).child("Details").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                user1 = dataSnapshot.getValue(User.class);
+                number.setText(user1.getPhonenumber());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }

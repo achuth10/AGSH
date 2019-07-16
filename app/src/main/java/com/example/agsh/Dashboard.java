@@ -2,6 +2,7 @@ package com.example.agsh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,19 +18,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayout.OnRefreshListener {
     private FloatingActionButton invite,receive;
     private DatabaseReference UserDatabaseReference,numref;
     private FirebaseAuth mauth ;
     private User user;
     private String accbal;
     private TextView accountbal;
+    private SwipeRefreshLayout swiperefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         mauth=FirebaseAuth.getInstance();
+        swiperefresh= findViewById(R.id.swiperefresh);
+        swiperefresh.setRefreshing(true);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         numref=UserDatabaseReference.child(mauth.getUid()).child("Details");
         initlistener();
@@ -62,6 +66,7 @@ public class Dashboard extends AppCompatActivity {
                 user = dataSnapshot.getValue(User.class);
                 accbal = user.getAccbal();
                 accountbal.setText("Pay connect balance " + accbal);
+                swiperefresh.setRefreshing(false);
             }
 
             @Override
@@ -70,4 +75,10 @@ public class Dashboard extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//    public void onRefresh() {
+//        swiperefresh.setRefreshing(true);
+//        initlistener();
+//    }
 }
