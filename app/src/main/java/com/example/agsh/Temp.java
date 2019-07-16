@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.agsh.Models.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,28 +25,27 @@ import org.json.JSONObject;
 
 public class Temp extends AppCompatActivity {
     private static final String TAG = "";
-    String id;
-    User user;
+    private String id;
+    private User user;
+    private FirebaseAuth firebaseAuth;
     private TextView textView;
     private DatabaseReference UserDatabaseReference, numref;
-    private String name,amt;
+    private String name,amt,email,number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-
-        Bundle extras = getIntent().getExtras();
-        if(extras!=null) {
-            amt=extras.getString("Amt");
-            numref = UserDatabaseReference.child(extras.getString("Uuid")).child("Details");
-        }
+        firebaseAuth=FirebaseAuth.getInstance();
+        numref = UserDatabaseReference.child(firebaseAuth.getUid()).child("Details");
         numref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user=dataSnapshot.getValue(User.class);
-                name=user.getName();
+                user = dataSnapshot.getValue(User.class);
+                name = user.getName();
+                email= user.getEmail();
+                number=user.getPhonenumber();
             }
 
             @Override
@@ -53,17 +53,23 @@ public class Temp extends AppCompatActivity {
 
             }
         });
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null) {
+            if (extras.getString("InviteAmt") != null) {
+                amt = extras.getString("InviteAmt");
+                numref = UserDatabaseReference.child(extras.getString("Uuid")).child("Details");
+            } else if (extras.getString("AddAmt") != null) {
+
+                amt = extras.getString("AddAmt");
+
+            }
+
+
+        }
+        else name = "John Doe";
         Checkout.preload(getApplicationContext());
 
-        // Payment button created by you in XML layout
-        Button button = (Button) findViewById(R.id.tempbtn);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startPayment();
-            }
-        });
+        startPayment();
     }
 
     public void startPayment() {
@@ -76,16 +82,16 @@ public class Temp extends AppCompatActivity {
 
         try {
             JSONObject options = new JSONObject();
-            options.put("name", user.getName());
-            options.put("description", "Demoing Charges");
+            options.put("name", name);
+            options.put("description", "Add PayConnect balance");
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             options.put("currency", "INR");
             options.put("amount", amt);
 
             JSONObject preFill = new JSONObject();
-            preFill.put("email", user.getEmail());
-            preFill.put("contact", user.getPhonenumber());
+           preFill.put("email", email);
+           preFill.put("contact", number);
 
             options.put("prefill", preFill);
 
@@ -120,6 +126,7 @@ public class Temp extends AppCompatActivity {
     public void onPaymentError(int code, String response) {
         try {
             Toast.makeText(this, "Payment failed: " + code + " " + response, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(),AddBalance.class));
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentError", e);
         }

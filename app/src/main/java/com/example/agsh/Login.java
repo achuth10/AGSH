@@ -50,7 +50,7 @@ private FirebaseAuth mAuth;
                                     Toast.makeText(Login.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(Login.this, Invites.class));
+                                    startActivity(new Intent(Login.this, Dashboard.class));
                                     finish();
                                 }
                             }

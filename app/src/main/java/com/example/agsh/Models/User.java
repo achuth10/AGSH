@@ -4,15 +4,29 @@ import android.widget.EditText;
 
 public class User {
 
-    private String id,name,phonenumber,email;
+    private String id;
+    private String name;
+    private String phonenumber;
+    private String email;
+
+    public String getAccbal() {
+        return accbal;
+    }
+
+    public void setAccbal(String accbal) {
+        this.accbal = accbal;
+    }
+
+    private String accbal;
 User()
 {
 
 }
-    public User(String emailtxt, String name, String number) {
+    public User(String emailtxt, String name, String number,String accbal) {
         this.name=name;
         this.phonenumber=number;
         this.email=emailtxt;
+        this.accbal = accbal;
     }
 
     public String getId() {
