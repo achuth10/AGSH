@@ -40,7 +40,7 @@ public class Dashboard extends AppCompatActivity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Invites.class));
+                startActivity(new Intent(getApplicationContext(),SendMoney.class));
             }
         });
         receive.setOnClickListener(new View.OnClickListener() {

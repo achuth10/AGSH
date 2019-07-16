@@ -53,27 +53,15 @@ private EditText amt;
         quick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initlistener();
+                int a =0;
+                if(!amt.getText().toString().equals(""))
+                    a=Integer.parseInt(amt.getText().toString());
+                String newvalue = String.valueOf(Integer.parseInt(prevbal) + a);
+                numref.setValue(newvalue);
                 Intent i = new Intent(getApplicationContext(),Dashboard.class);
                 startActivity(i);
             }
         });
     }
 
-
-
-    private void initlistener() {
-        numref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String newvalue = String.valueOf(Integer.parseInt(prevbal) + Integer.parseInt(amt.getText().toString()));
-                numref.setValue(newvalue);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

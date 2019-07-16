@@ -46,7 +46,7 @@ String emailtxt,passtxt;
         public void onClick(View v) {
             emailtxt = email.getText().toString();
             passtxt = password.getText().toString();
-            final User user = new User(emailtxt, name.getText().toString(), number.getText().toString(),"0");
+
             mauth.createUserWithEmailAndPassword(emailtxt, passtxt)
                     .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -56,6 +56,7 @@ String emailtxt,passtxt;
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(SignUp.this, Dashboard.class));
+                                final User user = new User(emailtxt, name.getText().toString(), number.getText().toString(),"0",mauth.getUid());
                                 UserDatabaseReference.child(mauth.getUid()).child("Details").setValue(user);
                                 finish();
                             }

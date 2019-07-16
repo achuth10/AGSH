@@ -22,11 +22,12 @@ User()
 {
 
 }
-    public User(String emailtxt, String name, String number,String accbal) {
+    public User(String emailtxt, String name, String number,String accbal,String id ) {
         this.name=name;
         this.phonenumber=number;
         this.email=emailtxt;
         this.accbal = accbal;
+        this.id=id;
     }
 
     public String getId() {
