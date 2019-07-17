@@ -3,6 +3,8 @@ package com.example.agsh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +21,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class Login extends AppCompatActivity {
 private Button login;
 private TextView signup;
@@ -30,15 +35,50 @@ private FirebaseAuth mAuth;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     mAuth= FirebaseAuth.getInstance();
+    Executor newExecutor = Executors.newSingleThreadExecutor();
+
+    FragmentActivity activity = this;
+
+    final BiometricPrompt myBiometricPrompt = new BiometricPrompt(activity, newExecutor, new BiometricPrompt.AuthenticationCallback() {
+        @Override
+
+
+        public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+            super.onAuthenticationError(errorCode, errString);
+            if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+            }
+        }
+
+        @Override
+        public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+            super.onAuthenticationSucceeded(result);
+            System.out.println("success");
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+
+        }
+
+        @Override
+        public void onAuthenticationFailed() {
+            super.onAuthenticationFailed();
+            System.out.println("Failed");
+
+        }
+    });
+
+    final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+
+
+            .setTitle("Scan to verify your identity")
+            .setNegativeButtonText("Cancel")
+            .build();
     FirebaseUser firebaseUser = mAuth.getCurrentUser();
     if(firebaseUser!=null)
-        startActivity(new Intent(getApplicationContext(),Dashboard.class));
+        myBiometricPrompt.authenticate(promptInfo);
     else
         init();
     }
 
     private void init() {
-        mAuth=FirebaseAuth.getInstance();
         login= (Button)findViewById(R.id.SubmitLogin);
         emailedit=(EditText)findViewById(R.id.EmailLditLogin);
         passedit=(EditText)findViewById(R.id.PasswordEditLogin);
