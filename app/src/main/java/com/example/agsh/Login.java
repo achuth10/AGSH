@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 private Button login;
+private TextView signup;
 private String password,email;
 private EditText emailedit,passedit;
 private FirebaseAuth mAuth;
@@ -27,15 +29,26 @@ private FirebaseAuth mAuth;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+    mAuth= FirebaseAuth.getInstance();
+    FirebaseUser firebaseUser = mAuth.getCurrentUser();
+    if(firebaseUser!=null)
+        startActivity(new Intent(getApplicationContext(),Dashboard.class));
+    else
         init();
     }
 
     private void init() {
-    mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();
         login= (Button)findViewById(R.id.SubmitLogin);
         emailedit=(EditText)findViewById(R.id.EmailLditLogin);
         passedit=(EditText)findViewById(R.id.PasswordEditLogin);
-
+        signup=(TextView) findViewById(R.id.SignupText);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),SignUp.class));
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

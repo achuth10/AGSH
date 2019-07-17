@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/AddAmtEdit"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="28dp"
         android:textSize="50dp"
         android:textColor="#000000"
         android:text="Add Money" />
@@ -42,4 +42,25 @@
         android:id="@+id/AddMoneyBtnTemp"
         android:layout_centerHorizontal="true"
         android:text="Quick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/AddMoneyBtnTempAmzn"
+        android:id="@+id/AddMoneyBtnTempPaytm"
+        android:layout_centerHorizontal="true"
+        android:text="Quick paytm"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/AddMoneyBtnTemp"
+        android:id="@+id/AddMoneyBtnTempAmzn"
+        android:layout_centerHorizontal="true"
+        android:text="Quick amzn"/>
+
+
+
 </RelativeLayout>

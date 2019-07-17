@@ -56,7 +56,7 @@ String emailtxt,passtxt;
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(SignUp.this, Dashboard.class));
-                                final User user = new User(emailtxt, name.getText().toString(), number.getText().toString(),"0",mauth.getUid(),"0","0");
+                                final User user = new User(emailtxt, name.getText().toString(), number.getText().toString(),"0",mauth.getUid(),"1000","1000");
                                 UserDatabaseReference.child(mauth.getUid()).child("Details").setValue(user);
                                 finish();
                             }

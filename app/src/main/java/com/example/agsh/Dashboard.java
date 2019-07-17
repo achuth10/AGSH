@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.agsh.Models.User;
@@ -26,6 +27,7 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
     private String accbal;
     private TextView accountbal;
     private SwipeRefreshLayout swiperefresh;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,13 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
         mauth=FirebaseAuth.getInstance();
         swiperefresh= findViewById(R.id.swiperefresh);
         swiperefresh.setRefreshing(true);
+        button=findViewById(R.id.Balancebtn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Balances.class));
+            }
+        });
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         numref=UserDatabaseReference.child(mauth.getUid()).child("Details");
         initlistener();
@@ -76,9 +85,4 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
         });
     }
 
-//    @Override
-//    public void onRefresh() {
-//        swiperefresh.setRefreshing(true);
-//        initlistener();
-//    }
 }

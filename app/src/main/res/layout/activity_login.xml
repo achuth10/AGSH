@@ -17,18 +17,29 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:layout_margin="20dp"
         android:layout_below="@id/EmailLditLogin"
         android:layout_centerHorizontal="true"
         android:inputType="textPassword"
         android:id="@+id/PasswordEditLogin"/>
 
+    <TextView
+        android:id="@+id/SignupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordEditLogin"
+        android:layout_alignEnd="@id/PasswordEditLogin"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="20dp"
+        android:text="Sign up !" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/SubmitLogin"
-        android:text="Submit"
-        android:layout_marginTop="10dp"
+        android:text="Login"
+        android:layout_marginTop="30dp"
         android:layout_below="@id/PasswordEditLogin"
         android:layout_centerHorizontal="true"
         />
