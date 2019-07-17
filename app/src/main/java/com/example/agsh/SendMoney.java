@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class SendMoney extends AppCompatActivity {
     private FirebaseAuth mauth;
     private DatabaseReference UserDatabaseReference,numref,inviteuserref;
-    private User user,user1;
+    private User user,user1,user2;
     private EditText number,amt;
     private Button sendmoney;
     private String toid,toamt="";
@@ -40,6 +40,7 @@ public class SendMoney extends AppCompatActivity {
         sendmoney= findViewById(R.id.Sendbtn);
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         numref=UserDatabaseReference.child(mauth.getUid()).child("Details");
+        myinit();
         Bundle extras = getIntent().getExtras();
         if(extras!=null)
         {
@@ -74,16 +75,23 @@ public class SendMoney extends AppCompatActivity {
                             if (data.getKey().equals("Details")) {
                                 user = data.getValue(User.class);
                                 if (user.getPhonenumber().equals(number.getText().toString())) {
-                                    String balance = user.getAccbal();
-                                    flag = 1;
-                                    int newbal = Integer.parseInt(balance) + Integer.parseInt(amt.getText().toString());
-                                    UserDatabaseReference.child(user.getId()).child("Details").child("accbal").setValue(String.valueOf(newbal));
-                                    if (!toamt.equals("")) {
-                                        String realamt = amt.getText().toString();
-                                        if (Integer.parseInt(toamt) - Integer.parseInt(realamt) == 0) {
-                                            UserDatabaseReference.child(user.getId()).child("InvitedUser").removeValue();
-                                        }
+                                    if (Integer.parseInt(user2.getAccbal()) < Integer.parseInt(amt.getText().toString())) {
+                                        Toast.makeText(getApplicationContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
+                                        flag=1;
+                                    } else {
+                                        String balance = user.getAccbal();
+                                        flag = 1;
+                                        int newbal = Integer.parseInt(balance) + Integer.parseInt(amt.getText().toString());
+                                        UserDatabaseReference.child(user.getId()).child("Details").child("accbal").setValue(String.valueOf(newbal));
+                                        int newbalance = Integer.parseInt(user2.getAccbal()) - Integer.parseInt(amt.getText().toString());
+                                        UserDatabaseReference.child(user2.getId()).child("Details").child("accbal").setValue(String.valueOf(newbalance));
+                                        if (!toamt.equals("")) {
+                                            String realamt = amt.getText().toString();
+                                            if (Integer.parseInt(toamt) - Integer.parseInt(realamt) == 0) {
+                                                UserDatabaseReference.child(user.getId()).child("InvitedUser").removeValue();
+                                            }
 
+                                        }
                                     }
                                 }
 
@@ -123,4 +131,25 @@ public class SendMoney extends AppCompatActivity {
         });
     }
 
+
+    private void myinit() {
+        numref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                user2 = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        UserDatabaseReference.removeEventListener(userListener);
+    }
 }
