@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class SendMoney extends AppCompatActivity {
     private FirebaseAuth mauth;
-    private DatabaseReference UserDatabaseReference,numref,inviteuserref;
+    private DatabaseReference UserDatabaseReference,numref;
     private User user,user1,user2;
     private EditText number,amt;
     private Button sendmoney;
@@ -150,6 +150,7 @@ public class SendMoney extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UserDatabaseReference.removeEventListener(userListener);
+        if(userListener!=null)
+            UserDatabaseReference.removeEventListener(userListener);
     }
 }
