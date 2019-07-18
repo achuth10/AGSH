@@ -18,8 +18,129 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearlayout"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/split" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_margin="20dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:text="Bills"
+                        android:id="@+id/DashboardBillsBtn"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        />
+
+                        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/history"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="Balances"
+                    android:id="@+id/BalanceDashboardBtn"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/card"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Cards"
+                    android:id="@+id/DashboardCardsBtn"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="15dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:src="@drawable/card"
+                            android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="History"
+                        android:id="@+id/TransactionBtn"
+                        android:gravity="center"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/Fam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -48,14 +169,6 @@
             app:fab_size="mini"
             app:fab_title="Request Money" />
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-    <Button
-        android:id="@+id/Balancebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Button" />
 
 </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

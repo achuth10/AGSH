@@ -123,21 +123,21 @@ private EditText amt;
     private void toast(String amazon_pay) {
         Toast.makeText(getApplicationContext(),amazon_pay,Toast.LENGTH_SHORT).show();
     }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.invitemenu, menu);
-        return true;
-    }
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.urinvites:
-                startActivity(new Intent(getApplicationContext(),Invites.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.invitemenu, menu);
+//        return true;
+//    }
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case R.id.urinvites:
+//                startActivity(new Intent(getApplicationContext(),Invites.class));
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     private void init() {
         numref.addListenerForSingleValueEvent(new ValueEventListener() {
