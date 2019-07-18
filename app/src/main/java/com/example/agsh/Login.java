@@ -66,8 +66,6 @@ private FirebaseAuth mAuth;
     });
 
     final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-
-
             .setTitle("Scan to verify your identity")
             .setNegativeButtonText("Cancel")
             .build();

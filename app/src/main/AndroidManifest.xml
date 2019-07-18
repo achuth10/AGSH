@@ -3,8 +3,11 @@
     package="com.example.agsh">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.fingerprint"
-        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
@@ -14,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Balances"></activity>
+        <activity android:name=".AddWalletBalance"></activity>
+        <activity android:name=".Balances" />
         <activity android:name=".SendMoney" />
         <activity android:name=".AddBalance" />
         <activity android:name=".Dashboard" />
