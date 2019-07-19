@@ -69,11 +69,10 @@ private FirebaseAuth mAuth;
             .setTitle("Scan to verify your identity")
             .setNegativeButtonText("Cancel")
             .build();
+    init();
     FirebaseUser firebaseUser = mAuth.getCurrentUser();
     if(firebaseUser!=null)
         myBiometricPrompt.authenticate(promptInfo);
-    else
-        init();
     }
 
     private void init() {
@@ -90,24 +89,29 @@ private FirebaseAuth mAuth;
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email=emailedit.getText().toString();
-                password=passedit.getText().toString();
-
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(Login.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    startActivity(new Intent(Login.this, Dashboard.class));
-                                    finish();
+                email = emailedit.getText().toString();
+                password = passedit.getText().toString();
+                if (email.length() <= 0) {
+                    Toast.makeText(getApplicationContext(), "Please enter your email id ", Toast.LENGTH_SHORT).show();
+                } else if (password.length() <= 5) {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid password ", Toast.LENGTH_SHORT).show();
+                } else {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(Login.this, "Authentication failed." + task.getException(),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        startActivity(new Intent(Login.this, Dashboard.class));
+                                        finish();
+                                    }
                                 }
-                            }
-                        });
+                            });
 
 
+                }
             }
         });
     }
