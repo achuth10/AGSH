@@ -31,8 +31,8 @@ public class Invites extends AppCompatActivity {
     private static final int RESULT_PICK_CONTACT = 135;
     private DatabaseReference UserDatabaseReference;
     private FirebaseAuth firebaseAuth;
-    private Button invite,phonebook;
-    private EditText number, amt;
+    private Button invite;//,phonebook;
+    private EditText number, amt,number0,number1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,11 @@ public class Invites extends AppCompatActivity {
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseAuth.getUid());
         invite = findViewById(R.id.Invitebtn);
         number = findViewById(R.id.InviteNumber);
+        number0= findViewById(R.id.InviteNumber0);
+        number1= findViewById(R.id.InviteNumber1);
+
         amt = findViewById(R.id.InviteAmt);
-        phonebook= findViewById(R.id.Phonebook);
+        //phonebook= findViewById(R.id.Phonebook);
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,14 +54,14 @@ public class Invites extends AppCompatActivity {
                 UserDatabaseReference.child("InvitedUser").setValue(invitedUser);
             }
         });
-        phonebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final int PICK_CONTACT = 2015;
-                Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-                startActivityForResult(i, PICK_CONTACT);
-            }
-        });
+//        phonebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final int PICK_CONTACT = 2015;
+//                Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+//                startActivityForResult(i, PICK_CONTACT);
+//            }
+//        });
     }
 
 

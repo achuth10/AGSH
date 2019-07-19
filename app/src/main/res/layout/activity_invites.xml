@@ -5,30 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Invites">
+
     <TextView
+        android:id="@+id/InviteUsersTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/InviteNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="228dp"
-        android:textSize="50dp"
+        android:text="Invite Users"
         android:textColor="#000000"
-        android:text="Invite Users" />
+        android:textSize="50sp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/InviteNumber0"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/InviteNumber1"
+        android:layout_centerVertical="true"
+        android:hint="Friend's phone no"/>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/InviteNumber1"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/InviteNumber"
+        android:layout_margin="20dp"
+        android:layout_centerVertical="true"
+        android:hint="Friend's phone no"/>
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/InviteNumber"
+        android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:hint="Friend's phone no"/>
-    <Button
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Phonebook"
-        android:layout_toRightOf="@id/InviteNumber"
-        android:layout_centerVertical="true"
-        android:layout_margin="10dp"
-        />
+        android:layout_toLeftOf="@id/Spinner"
+        android:layout_marginTop="90dp"
+        android:text="Split by " />
+
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -36,12 +55,21 @@
         android:layout_centerHorizontal="true"
         android:hint="Enter amount"
         android:layout_margin="20dp"
-        android:layout_below="@id/InviteNumber"/>
-<Button
+        android:layout_above="@id/InviteNumber0"/>
+
+    <Spinner
+        android:id="@+id/Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/InviteUsersTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp" />
+
+    <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_below="@id/InviteAmt"
+    android:layout_below="@id/InviteNumber"
     android:layout_margin="20dp"
     android:id="@+id/Invitebtn"
     android:text="Invite"/>

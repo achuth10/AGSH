@@ -49,7 +49,18 @@ private EditText amt;
         amznpay= findViewById(R.id.AddMoneyBtnTempAmzn);
         paytm = findViewById(R.id.AddMoneyBtnTempPaytm);
 
-
+        addmoney.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                quick.setVisibility(View.VISIBLE);
+                amznpay.setVisibility(View.VISIBLE);
+                paytm.setVisibility(View.VISIBLE);
+                return true;
+            }
+        });
+        quick.setVisibility(View.INVISIBLE);
+        amznpay.setVisibility(View.INVISIBLE);
+        paytm.setVisibility(View.INVISIBLE);
         addmoney.setEnabled(false);
         quick.setEnabled(false);
         amznpay.setEnabled(false);
