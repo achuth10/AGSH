@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/AddRelative"
+    android:background="@color/background_color"
     tools:context=".AddBalance">
 
 
@@ -15,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
         android:textSize="50dp"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:text="Add Money" />
 <EditText
     android:layout_width="150dp"
@@ -23,6 +25,13 @@
     android:layout_centerHorizontal="true"
     android:layout_margin="20dp"
     android:inputType="number"
+    android:padding="10dp"
+    android:singleLine="true"
+    android:hint="Amount"
+    android:drawableLeft="@drawable/rupeef"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="18sp"
     android:layout_centerVertical="true"
     android:id="@+id/AddAmtEdit"
 />
@@ -32,7 +41,9 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/AddAmtEdit"
     android:id="@+id/AddMoneyBtn"
+    android:textColor="@color/background_color"
     android:layout_centerHorizontal="true"
+    android:background="@drawable/loginbutton_selector"
     android:text="Add Money"/>
     <Button
         android:layout_width="wrap_content"
@@ -40,7 +51,9 @@
         android:layout_margin="20dp"
         android:layout_below="@id/AddMoneyBtn"
         android:id="@+id/AddMoneyBtnTemp"
+        android:textColor="@color/background_color"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/loginbutton_selector"
         android:text="Quick"/>
 
     <Button
@@ -48,7 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_below="@id/AddMoneyBtnTempAmzn"
+        android:textColor="@color/background_color"
         android:id="@+id/AddMoneyBtnTempPaytm"
+        android:background="@drawable/loginbutton_selector"
         android:layout_centerHorizontal="true"
         android:text="Quick paytm"/>
 
@@ -57,6 +72,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_below="@id/AddMoneyBtnTemp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/loginbutton_selector"
         android:id="@+id/AddMoneyBtnTempAmzn"
         android:layout_centerHorizontal="true"
         android:text="Quick amzn"/>

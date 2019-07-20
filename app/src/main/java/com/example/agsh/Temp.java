@@ -57,6 +57,7 @@ public class Temp extends AppCompatActivity {
         if(extras!=null) {
             if (extras.getString("InviteAmt") != null) {
                 amt = extras.getString("InviteAmt");
+                amt+=".00";
                 numref = UserDatabaseReference.child(extras.getString("Uuid")).child("Details");
             } else if (extras.getString("AddAmt") != null) {
 
@@ -83,9 +84,9 @@ public class Temp extends AppCompatActivity {
         try {
             JSONObject options = new JSONObject();
             options.put("name", name);
-            options.put("description", "Add PayConnect balance");
+            options.put("description", "Add Z credits");
             //You can omit the image option to fetch the image from dashboard
-            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            options.put("image", "https://firebasestorage.googleapis.com/v0/b/agsh-a7175.appspot.com/o/logo.png?alt=media&token=14b7aa15-869e-4907-a47b-e55a0298e0a3");
             options.put("currency", "INR");
             options.put("amount", amt);
 
@@ -126,7 +127,7 @@ public class Temp extends AppCompatActivity {
     public void onPaymentError(int code, String response) {
         try {
             Toast.makeText(this, "Payment failed: " + code + " " + response, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(),AddBalance.class));
+            startActivity(new Intent(getApplicationContext(),Dashboard.class));
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentError", e);
         }

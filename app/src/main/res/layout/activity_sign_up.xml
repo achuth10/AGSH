@@ -136,9 +136,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@drawable/loginbutton_selector"
-        android:padding="3dp"
         android:text="@string/signUp"
+        android:padding="3dp"
+        android:background="@drawable/loginbutton_selector"
         android:textColor="@color/background_color"
         android:textSize="17sp"
         android:textStyle="bold" />

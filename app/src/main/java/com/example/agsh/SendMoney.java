@@ -103,7 +103,7 @@ public class SendMoney extends AppCompatActivity {
                 }
                 if(flag==0)
                 {
-                    Toast.makeText(getApplicationContext(),"User is not signed up with PC",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"User is not signed up with ZPay",Toast.LENGTH_SHORT).show();
                 }
                 else
                     startActivity(new Intent(getApplicationContext(),Dashboard.class));

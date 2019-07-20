@@ -10,9 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.agsh.Models.User;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +30,7 @@ private EditText amt;
     private User user1;
     private String prevbal,paytmbal,amznpaybal,accbal;
     int newbalance;
+    private RelativeLayout relativeLayout;
     private boolean flag ;
 
     @Override
@@ -35,7 +38,7 @@ private EditText amt;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_balance);
         flag=false;
-
+        relativeLayout =findViewById(R.id.AddRelative);
         Bundle extras = getIntent().getExtras();
         if(extras!=null) {
             prevbal = extras.getString("AccBal");
@@ -84,7 +87,7 @@ private EditText amt;
             public void onClick(View v) {
                     if (!amt.getText().toString().equals("")) {
                         if(Integer.parseInt(amznpaybal)<Integer.parseInt(amt.getText().toString()))
-                            toast("Insufficient balance in Amazon pay");
+                            Snackbar.make(relativeLayout, "Insufficient balance in Amazon pay", Snackbar.LENGTH_SHORT).show();
                         else {
                             amznpaybal = String.valueOf(Integer.parseInt(amznpaybal) - Integer.parseInt(amt.getText().toString()));
                             numref.child("amazon").setValue(amznpaybal);
@@ -104,7 +107,7 @@ private EditText amt;
             public void onClick(View v) {
                 if (!amt.getText().toString().equals("")) {
                     if(Integer.parseInt(paytmbal)<Integer.parseInt(amt.getText().toString()))
-                        toast("Insufficient balance in Paytm wallet");
+                        Snackbar.make(relativeLayout, "Insufficient balance in Paytm wallet", Snackbar.LENGTH_SHORT).show();
                     else {
                         paytmbal = String.valueOf(Integer.parseInt(paytmbal) - Integer.parseInt(amt.getText().toString()));
                         numref.child("paytm").setValue(paytmbal);
@@ -121,9 +124,13 @@ private EditText amt;
         addmoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Temp.class);
-                i.putExtra("AddAmt",amt.getText().toString());
-                startActivity(i);
+                if (amt.getText().toString().equals("") || Integer.parseInt(amt.getText().toString()) < 50) {
+                    Snackbar.make(relativeLayout, "Please enter a valid amount", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(getApplicationContext(), Temp.class);
+                    i.putExtra("AddAmt", amt.getText().toString());
+                    startActivity(i);
+                }
             }
         });
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".SendMoney">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="228dp"
         android:textSize="50dp"
-        android:textColor="#000000"
+        android:textColor="@color/white_greyish"
         android:text="Send Money" />
 
     <EditText
@@ -22,6 +23,11 @@
         android:id="@+id/SendNumber"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
         android:hint="Friend's phone no"/>
 
     <EditText
@@ -29,8 +35,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/SendAmt"
         android:layout_centerHorizontal="true"
-        android:hint="Enter amount"
+        android:hint="Amount"
+        android:drawableLeft="@drawable/rupeef"
         android:layout_margin="20dp"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
         android:layout_below="@id/SendNumber"/>
     <Button
         android:layout_width="wrap_content"
@@ -38,6 +50,11 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/SendAmt"
         android:layout_margin="20dp"
+        android:padding="3dp"
+        android:background="@drawable/loginbutton_selector"
+        android:textColor="@color/background_color"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:id="@+id/Sendbtn"
         android:text="Send"/>
 </RelativeLayout>

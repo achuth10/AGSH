@@ -78,7 +78,7 @@ private Button AddWalletmoneybtn;
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
                 accbal = user.getAccbal();
-                accbalance.setText("Pay connect balance " + accbal);
+                accbalance.setText("Z credits -  " + accbal);
                 AddWalletmoneybtn.setEnabled(true);
             }
 

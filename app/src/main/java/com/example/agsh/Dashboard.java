@@ -7,7 +7,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.agsh.Models.User;
@@ -20,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayout.OnRefreshListener {
+public class Dashboard extends AppCompatActivity {
     private FloatingActionButton invite,receive;
     private FloatingActionsMenu floatingActionsMenu;
     private DatabaseReference UserDatabaseReference,numref;
@@ -58,6 +57,12 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Invites.class));
+            }
+        });
+        cards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BarCode.class));
             }
         });
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");

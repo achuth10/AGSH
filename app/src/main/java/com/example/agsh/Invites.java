@@ -42,8 +42,8 @@ public class Invites extends AppCompatActivity {
         UserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseAuth.getUid());
         invite = findViewById(R.id.Invitebtn);
         number = findViewById(R.id.InviteNumber);
-        number0= findViewById(R.id.InviteNumber0);
-        number1= findViewById(R.id.InviteNumber1);
+//        number0= findViewById(R.id.InviteNumber0);
+//        number1= findViewById(R.id.InviteNumber1);
 
         amt = findViewById(R.id.InviteAmt);
         //phonebook= findViewById(R.id.Phonebook);

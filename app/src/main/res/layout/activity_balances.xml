@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background_color"
     android:layout_height="match_parent"
     tools:context=".Balances">
 <TextView
@@ -12,7 +13,7 @@
     android:text="Balances"
     android:textSize="30dp"
     android:textStyle="bold"
-    android:textColor="#000000"
+    android:textColor="@color/white"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="80dp"
     android:id="@+id/BalanceTxt"
@@ -29,35 +30,35 @@
             android:orientation="horizontal"
             android:baselineAligned="false"
             >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/pp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:id="@+id/mk"
-            />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Add"
-                    android:layout_margin="8dp"
-                    android:id="@+id/PCBalanceAddbtn"/>
+<!--                <ImageView-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/pp" />-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:gravity="center"-->
+<!--            android:id="@+id/mk"-->
+<!--            />-->
+<!--                <Button-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="Add"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    android:id="@+id/PCBalanceAddbtn"/>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -75,6 +76,7 @@
         android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:id="@+id/APBalance"
+            android:textColor="@color/white"
         android:textSize="30sp"
             android:gravity="center"
         android:textStyle="bold" />
@@ -85,6 +87,10 @@
                     android:layout_gravity="center"
                     android:text="Add"
                     android:layout_margin="8dp"
+                    android:background="@drawable/loginbutton_selector"
+                    android:textColor="@color/background_color"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
                     android:id="@+id/APBalanceAddbtn"/>
 
             </LinearLayout>
@@ -115,6 +121,7 @@
         android:layout_margin="20dp"
         android:id="@+id/PBalance"
         android:textSize="30sp"
+        android:textColor="@color/white"
         android:gravity="center"
         android:textStyle="bold" />
 
@@ -123,37 +130,41 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Add"
+                android:background="@drawable/loginbutton_selector"
+                android:textColor="@color/background_color"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:layout_margin="8dp"
                 android:id="@+id/PtmBalanceAddbtn"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/mk"
-                android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:id="@+id/Placeholder"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Add"
-                android:layout_margin="8dp"
-                android:id="@+id/Placeholderbtn"/>
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:src="@drawable/mk"-->
+<!--                android:layout_gravity="center"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:id="@+id/Placeholder"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textStyle="bold" />-->
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Add"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:id="@+id/Placeholderbtn"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

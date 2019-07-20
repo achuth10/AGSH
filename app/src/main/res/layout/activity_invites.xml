@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".Invites">
 
     <TextView
@@ -12,58 +13,71 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Invite Users"
-        android:textColor="#000000"
-        android:textSize="50sp" />
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="40sp" />
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/InviteNumber0"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/InviteNumber1"
-        android:layout_centerVertical="true"
-        android:hint="Friend's phone no"/>
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/InviteNumber1"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/InviteNumber"
-        android:layout_margin="20dp"
-        android:layout_centerVertical="true"
-        android:hint="Friend's phone no"/>
+<!--    <EditText-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/InviteNumber0"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@id/InviteNumber1"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:hint="Friend's phone no"/>-->
+<!--    <EditText-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/InviteNumber1"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@id/InviteNumber"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:hint="Friend's phone no"/>-->
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/InviteNumber"
         android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        android:textSize="18sp"
         android:layout_centerVertical="true"
         android:hint="Friend's phone no"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/Spinner"
-        android:layout_marginTop="90dp"
-        android:text="Split by " />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_toLeftOf="@id/Spinner"-->
+<!--        android:layout_marginTop="90dp"-->
+<!--        android:text="Split by " />-->
 
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/InviteAmt"
         android:layout_centerHorizontal="true"
-        android:hint="Enter amount"
+        android:hint="Amount"
+        android:drawableLeft="@drawable/rupeef"
         android:layout_margin="20dp"
-        android:layout_above="@id/InviteNumber0"/>
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        android:layout_above="@id/InviteNumber"/>
 
-    <Spinner
-        android:id="@+id/Spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/InviteUsersTxt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp" />
+<!--    <Spinner-->
+<!--        android:id="@+id/Spinner"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/InviteUsersTxt"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="19dp" />-->
 
     <Button
     android:layout_width="wrap_content"
@@ -71,6 +85,10 @@
     android:layout_centerHorizontal="true"
     android:layout_below="@id/InviteNumber"
     android:layout_margin="20dp"
+        android:background="@drawable/loginbutton_selector"
     android:id="@+id/Invitebtn"
-    android:text="Invite"/>
+        android:textColor="@color/background_color"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Invite"/>
 </RelativeLayout>
