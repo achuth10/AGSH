@@ -34,6 +34,7 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        getSupportActionBar().hide();
         mauth=FirebaseAuth.getInstance();
         floatingActionsMenu= findViewById(R.id.Fam);
         swiperefresh= findViewById(R.id.swiperefresh);
@@ -91,7 +92,7 @@ public class Dashboard extends AppCompatActivity {//implements SwipeRefreshLayou
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
                 accbal = user.getAccbal();
-                accountbal.setText("Pay connect balance " + accbal);
+                accountbal.setText("Z credits - " + accbal);
                 balances.setVisibility(View.VISIBLE);
                 bills.setVisibility(View.VISIBLE);
                 cards.setVisibility(View.VISIBLE);

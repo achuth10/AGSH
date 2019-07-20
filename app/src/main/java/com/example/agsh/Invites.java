@@ -54,14 +54,6 @@ public class Invites extends AppCompatActivity {
                 UserDatabaseReference.child("InvitedUser").setValue(invitedUser);
             }
         });
-//        phonebook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final int PICK_CONTACT = 2015;
-//                Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-//                startActivityForResult(i, PICK_CONTACT);
-//            }
-//        });
     }
 
 

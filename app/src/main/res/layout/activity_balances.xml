@@ -29,35 +29,35 @@
             android:orientation="horizontal"
             android:baselineAligned="false"
             >
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="vertical">-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-<!--                <ImageView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="48dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:src="@drawable/account" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_margin="20dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:gravity="center"-->
-<!--            android:id="@+id/PCBalance"-->
-<!--            />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:text="Add"-->
-<!--                    android:layout_margin="8dp"-->
-<!--                    android:id="@+id/PCBalanceAddbtn"/>-->
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/mk"
+            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Add"
+                    android:layout_margin="8dp"
+                    android:id="@+id/PCBalanceAddbtn"/>
 
-<!--            </LinearLayout>-->
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:src="@drawable/amazon2"
                     android:layout_gravity="center"/>
         <TextView
@@ -106,7 +106,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/paytm"
                 android:layout_gravity="center"/>
     <TextView
@@ -127,33 +127,33 @@
                 android:id="@+id/PtmBalanceAddbtn"/>
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:orientation="vertical">-->
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/amazon2"-->
-<!--                android:layout_gravity="center"/>-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="20dp"-->
-<!--            android:id="@+id/Placeholder"-->
-<!--            android:gravity="center"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textStyle="bold" />-->
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:text="Add"-->
-<!--                android:layout_margin="8dp"-->
-<!--                android:id="@+id/Placeholderbtn"/>-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/mk"
+                android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:id="@+id/Placeholder"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Add"
+                android:layout_margin="8dp"
+                android:id="@+id/Placeholderbtn"/>
 
-<!--        </LinearLayout>-->
+        </LinearLayout>
 </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

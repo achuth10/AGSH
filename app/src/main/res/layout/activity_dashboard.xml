@@ -8,11 +8,13 @@
     tools:context=".Dashboard">
 <RelativeLayout
     android:layout_width="match_parent"
+    android:background="@color/background_color"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/accbal"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -47,6 +49,7 @@
                         android:layout_margin="20dp"
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
+                        android:textColor="@color/white"
                         android:text="Bills"
                         android:id="@+id/DashboardBillsBtn"
                         android:textStyle="bold"
@@ -72,6 +75,7 @@
                     android:layout_margin="20dp"
                     android:layout_height="wrap_content"
                     android:text="Balances"
+                    android:textColor="@color/white"
                     android:id="@+id/BalanceDashboardBtn"
                     android:textSize="30sp"
                     android:gravity="center"
@@ -105,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Cards"
+                    android:textColor="@color/white"
                     android:id="@+id/DashboardCardsBtn"
                     android:textSize="30sp"
                     android:gravity="center"
@@ -128,6 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:text="History"
+                        android:textColor="@color/white"
                         android:id="@+id/TransactionBtn"
                         android:gravity="center"
                         android:textSize="30sp"

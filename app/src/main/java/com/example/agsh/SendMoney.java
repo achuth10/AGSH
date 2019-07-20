@@ -85,6 +85,7 @@ public class SendMoney extends AppCompatActivity {
                                         UserDatabaseReference.child(user.getId()).child("Details").child("accbal").setValue(String.valueOf(newbal));
                                         int newbalance = Integer.parseInt(user2.getAccbal()) - Integer.parseInt(amt.getText().toString());
                                         UserDatabaseReference.child(user2.getId()).child("Details").child("accbal").setValue(String.valueOf(newbalance));
+                                        Toast.makeText(getApplicationContext(),"Invited successfully",Toast.LENGTH_SHORT).show();
                                         if (!toamt.equals("")) {
                                             String realamt = amt.getText().toString();
                                             if (Integer.parseInt(toamt) - Integer.parseInt(realamt) == 0) {

@@ -28,12 +28,13 @@ private EditText amt;
     private User user1;
     private String prevbal,paytmbal,amznpaybal,accbal;
     int newbalance;
+    private boolean flag ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_balance);
-
+        flag=false;
 
         Bundle extras = getIntent().getExtras();
         if(extras!=null) {
@@ -52,9 +53,19 @@ private EditText amt;
         addmoney.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                quick.setVisibility(View.VISIBLE);
-                amznpay.setVisibility(View.VISIBLE);
-                paytm.setVisibility(View.VISIBLE);
+                if(!flag) {
+                    quick.setVisibility(View.VISIBLE);
+                    amznpay.setVisibility(View.VISIBLE);
+                    paytm.setVisibility(View.VISIBLE);
+                    flag = true;
+                }
+                else
+                {
+                    quick.setVisibility(View.INVISIBLE);
+                    amznpay.setVisibility(View.INVISIBLE);
+                    paytm.setVisibility(View.INVISIBLE);
+                    flag = false;
+                }
                 return true;
             }
         });
